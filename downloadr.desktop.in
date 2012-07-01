@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=Downloadr
+_Comment=Downloadr application
+Categories=GNOME;Utility;
+Exec=downloadr
+Icon=downloadr
+Terminal=false
+Type=Application

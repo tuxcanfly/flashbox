@@ -41,6 +41,7 @@ class DownloadrWindow(Window):
 
         self.liststore = self.builder.get_object("liststore")
         self.iconview = self.builder.get_object("iconview")
+        self.status = self.builder.get_object("status")
 
         self.iconview.set_text_column(COL_PATH)
         self.iconview.set_pixbuf_column(COL_PIXBUF)
@@ -60,7 +61,12 @@ class DownloadrWindow(Window):
     def fill_store(self):
         self.liststore.clear()
 
+        num_videos = 0
         for pid in get_pids():
             for file_name in get_file_names(pid):
                 path = '/proc/%s/fd/%s' %(pid, file_name)
+                num_videos += 1
                 self.liststore.append([path, self.icon, True])
+
+        if num_videos:
+            self.status.set_text("%s videos found" % (num_videos))

@@ -4,6 +4,7 @@
 ### END LICENSE
 
 import os
+import subprocess
 import gettext
 
 from gettext import gettext as _
@@ -16,6 +17,8 @@ logger = logging.getLogger('downloadr')
 from downloadr_lib import Window
 from downloadr.AboutDownloadrDialog import AboutDownloadrDialog
 from downloadr.PreferencesDownloadrDialog import PreferencesDownloadrDialog
+
+from flashcache import get_pids, get_file_names
 
 COL_PATH = 0
 COL_PIXBUF = 1
@@ -34,8 +37,7 @@ class DownloadrWindow(Window):
         self.PreferencesDialog = PreferencesDownloadrDialog
 
         self.current_directory = os.path.realpath(os.path.expanduser('~'))
-        self.fileicon = self.get_icon(Gtk.STOCK_FILE)
-        self.diricon = self.get_icon(Gtk.STOCK_DIRECTORY)
+        self.icon = self.get_icon(Gtk.STOCK_FILE)
 
         self.liststore = self.builder.get_object("liststore")
         self.iconview = self.builder.get_object("iconview")
@@ -50,16 +52,15 @@ class DownloadrWindow(Window):
     def get_icon(self, icon):
         return Gtk.IconTheme.get_default().load_icon(icon, 48, 0)
 
+    def on_iconview_item_activated(self, widget, item):
+        model = widget.get_model()
+        path = model[item][COL_PATH]
+        subprocess.Popen(["gnome-open", path])
+
     def fill_store(self):
         self.liststore.clear()
 
-        if self.current_directory == None:
-            return
-
-        for fl in os.listdir(self.current_directory):
-
-            if not fl[0] == '.':
-                if os.path.isdir(os.path.join(self.current_directory, fl)):
-                    self.liststore.append([fl, self.diricon, True])
-                else:
-                    self.liststore.append([fl, self.fileicon, False])
+        for pid in get_pids():
+            for file_name in get_file_names(pid):
+                path = '/proc/%s/fd/%s' %(pid, file_name)
+                self.liststore.append([path, self.icon, True])

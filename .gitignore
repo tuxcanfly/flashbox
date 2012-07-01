@@ -1,2 +1,4 @@
 .bzr
 *.pyc[o]
+debian
+po

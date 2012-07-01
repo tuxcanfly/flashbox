@@ -3,6 +3,6 @@ _Name=Downloadr
 _Comment=Downloadr application
 Categories=GNOME;Utility;
 Exec=downloadr
-Icon=downloadr
+Icon=/usr/share/downloadr/media/downloadr.svg
 Terminal=false
 Type=Application

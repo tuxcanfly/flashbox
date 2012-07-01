@@ -37,7 +37,7 @@ class DownloadrWindow(Window):
         self.PreferencesDialog = PreferencesDownloadrDialog
 
         self.current_directory = os.path.realpath(os.path.expanduser('~'))
-        self.icon = self.get_icon(Gtk.STOCK_FILE)
+        self.icon = self.get_icon("video-x-generic")
 
         self.liststore = self.builder.get_object("liststore")
         self.iconview = self.builder.get_object("iconview")

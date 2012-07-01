@@ -10,7 +10,7 @@ import gettext
 from gettext import gettext as _
 gettext.textdomain('downloadr')
 
-from gi.repository import Gtk # pylint: disable=E0611
+from gi.repository import Gtk, GObject # pylint: disable=E0611
 import logging
 logger = logging.getLogger('downloadr')
 
@@ -23,6 +23,7 @@ from flashcache import get_pids, get_file_names
 COL_PATH = 0
 COL_PIXBUF = 1
 COL_IS_DIRECTORY = 2
+REFRESH_TIMEOUT = 1000 # 1s
 
 
 # See downloadr_lib.Window.py for more details about how this class works
@@ -48,6 +49,9 @@ class DownloadrWindow(Window):
 
         self.fill_store()
 
+        GObject.threads_init()
+        GObject.timeout_add(REFRESH_TIMEOUT, self.fill_store)
+
         # Code for other initialization actions should be added here.
 
     def get_icon(self, icon):
@@ -69,4 +73,6 @@ class DownloadrWindow(Window):
                 self.liststore.append([path, self.icon, True])
 
         if num_videos:
-            self.status.set_text("%s videos found" % (num_videos))
+            self.status.set_text(_("%s videos found" % (num_videos)))
+
+        return True

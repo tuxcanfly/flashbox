@@ -44,6 +44,8 @@ class DownloadrWindow(Window):
         self.iconview = self.builder.get_object("iconview")
         self.status = self.builder.get_object("status")
 
+        self.ready_message = self.status.get_text()
+
         self.iconview.set_text_column(COL_PATH)
         self.iconview.set_pixbuf_column(COL_PIXBUF)
 
@@ -62,17 +64,27 @@ class DownloadrWindow(Window):
         path = model[item][COL_PATH]
         subprocess.Popen(["xdg-open", path])
 
+    def on_liststore_row_deleted(self, *args, **kwargs):
+        if self.num_videos > 0:
+            self.num_videos -= 1
+        self.update_status()
+
     def fill_store(self):
         self.liststore.clear()
 
-        num_videos = 0
+        self.num_videos = 0
         for pid in get_pids():
             for file_name in get_file_names(pid):
                 path = '/proc/%s/fd/%s' %(pid, file_name)
-                num_videos += 1
+                self.num_videos += 1
                 self.liststore.append([path, self.icon, True])
 
-        if num_videos:
-            self.status.set_text(_("%s videos found" % (num_videos)))
+        self.update_status()
 
         return True
+
+    def update_status(self):
+        if self.num_videos:
+            self.status.set_text(_("%s videos found" % (self.num_videos)))
+        else:
+            self.status.set_text(self.ready_message)

@@ -86,7 +86,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 ##################################################################################
 
 DistUtilsExtra.auto.setup(
-    name='flashbox',
+    name='downloadr',
     version='12.07.1',
     license='GPL-3',
     author='Javed Khan',

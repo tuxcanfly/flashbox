@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires about_downloadr_dialog 1.0 -->
   <!-- interface-requires gtk+ 3.0 -->
+  <!-- interface-requires about_downloadr_dialog 1.0 -->
   <object class="AboutDownloadrDialog" id="about_downloadr_dialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -14,6 +14,7 @@
     <property name="website_label" translatable="yes">GitHub</property>
     <property name="license" translatable="yes">GPLv3</property>
     <property name="authors">&lt;Jakh Daven&gt; tuxcanfly@gmail.com</property>
+    <property name="artists">"Box" symbol by Martin Karachorov, from The Noun Project</property>
     <property name="logo">../media/downloadr.svg</property>
     <property name="license_type">gpl-3-0</property>
     <child internal-child="vbox">

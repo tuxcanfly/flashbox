@@ -80,7 +80,7 @@ DistUtilsExtra.auto.setup(
     license='GPL-3',
     author='Javed Khan',
     author_email='tuxcanfly@gmail.com',
-    description='View flash videos in native media player',
+    description='FlashBox collects temporary flash video files.',
     #long_description='Here a longer description',
     #url='https://launchpad.net/downloadr',
     cmdclass={'install': InstallAndUpdateDataDirectory}

@@ -82,7 +82,7 @@ DistUtilsExtra.auto.setup(
     author_email='tuxcanfly@gmail.com',
     description='FlashBox collects temporary flash video files.',
     #long_description='Here a longer description',
-    #url='https://launchpad.net/downloadr',
+    url='https://launchpad.net/flashbox',
     cmdclass={'install': InstallAndUpdateDataDirectory}
     )
 

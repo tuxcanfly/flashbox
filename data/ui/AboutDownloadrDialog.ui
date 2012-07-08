@@ -10,8 +10,8 @@
     <property name="program_name">FlashBox</property>
     <property name="version">0.3</property>
     <property name="copyright" translatable="yes">Copyright (C) 2012 Jakh Daven &lt;tuxcanfly@gmail.com&gt;</property>
-    <property name="website">https://launchpad.net/~tuxcanfly/+archive/flashbox</property>
-    <property name="website_label" translatable="yes">Homepage</property>
+    <property name="website">https://github.com/tuxcanfly/flashbox</property>
+    <property name="website_label" translatable="yes">GitHub</property>
     <property name="license" translatable="yes">GPLv3</property>
     <property name="authors">&lt;Jakh Daven&gt; tuxcanfly@gmail.com</property>
     <property name="logo">../media/downloadr.svg</property>

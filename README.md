@@ -8,4 +8,4 @@ Double clicking them will open them in your default media player.
 Screenshot:
 -----------
 
-![Downloadr](http://i.imgur.com/dtuJS.png)
+![Downloadr](http://i.imgur.com/k5x3J.png)

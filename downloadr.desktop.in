@@ -1,8 +1,8 @@
 [Desktop Entry]
-_Name=Downloadr
-_Comment=Downloadr application
+_Name=FlashBox
+_Comment=FlashBox application
 Categories=GNOME;Utility;
-Exec=downloadr
+Exec=flashbox
 Icon=/usr/share/downloadr/media/downloadr.svg
 Terminal=false
 Type=Application

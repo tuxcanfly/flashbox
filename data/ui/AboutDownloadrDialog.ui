@@ -7,7 +7,7 @@
     <property name="border_width">5</property>
     <property name="icon">../media/downloadr.svg</property>
     <property name="type_hint">normal</property>
-    <property name="program_name">Downloadr</property>
+    <property name="program_name">FlashBox</property>
     <property name="authors"></property>
     <property name="logo">../media/downloadr.svg</property>
     <child internal-child="vbox">

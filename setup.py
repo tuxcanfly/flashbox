@@ -87,7 +87,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='downloadr',
-    version='12.07.3',
+    version='12.07.4',
     license='GPL-3',
     author='Javed Khan',
     author_email='tuxcanfly@gmail.com',

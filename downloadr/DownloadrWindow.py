@@ -60,7 +60,7 @@ class DownloadrWindow(Window):
     def on_iconview_item_activated(self, widget, item):
         model = widget.get_model()
         path = model[item][COL_PATH]
-        subprocess.Popen(["gnome-open", path])
+        subprocess.Popen(["xdg-open", path])
 
     def fill_store(self):
         self.liststore.clear()

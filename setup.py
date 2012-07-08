@@ -46,7 +46,7 @@ def update_desktop_file(datadir):
         fin = file('downloadr.desktop.in', 'r')
         fout = file(fin.name + '.new', 'w')
 
-        for line in fin:            
+        for line in fin:
             if 'Icon=' in line:
                 line = "Icon=%s\n" % (datadir + 'media/downloadr.svg')
             fout.write(line)
@@ -69,18 +69,18 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
         update_config(previous_values)
 
 
-        
+
 ##################################################################################
 ###################### YOU SHOULD MODIFY ONLY WHAT IS BELOW ######################
 ##################################################################################
 
 DistUtilsExtra.auto.setup(
     name='downloadr',
-    version='0.1',
-    #license='GPL-3',
-    #author='Your Name',
-    #author_email='email@ubuntu.com',
-    #description='UI for managing …',
+    version='0.3',
+    license='GPL-3',
+    author='Javed Khan',
+    author_email='tuxcanfly@gmail.com',
+    description='View flash videos in native media player',
     #long_description='Here a longer description',
     #url='https://launchpad.net/downloadr',
     cmdclass={'install': InstallAndUpdateDataDirectory}

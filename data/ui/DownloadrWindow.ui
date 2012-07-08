@@ -8,16 +8,6 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-help</property>
   </object>
-  <object class="GtkListStore" id="liststore">
-    <columns>
-      <!-- column-name gchararray1 -->
-      <column type="gchararray"/>
-      <!-- column-name GdkPixbuf1 -->
-      <column type="GdkPixbuf"/>
-      <!-- column-name gboolean1 -->
-      <column type="gboolean"/>
-    </columns>
-  </object>
   <object class="DownloadrWindow" id="downloadr_window">
     <property name="width_request">500</property>
     <property name="height_request">200</property>
@@ -141,6 +131,7 @@
               <object class="GtkBox" id="box1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="spacing">191</property>
                 <child>
                   <object class="GtkLabel" id="status">
                     <property name="visible">True</property>
@@ -176,12 +167,12 @@
                     <property name="receives_default">True</property>
                     <property name="has_tooltip">True</property>
                     <property name="use_action_appearance">False</property>
-                    <property name="relief">none</property>
                     <property name="uri">http://vimeo.com/24160143</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
+                    <property name="pack_type">end</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
@@ -202,5 +193,15 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkListStore" id="liststore">
+    <columns>
+      <!-- column-name gchararray1 -->
+      <column type="gchararray"/>
+      <!-- column-name GdkPixbuf1 -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name gboolean1 -->
+      <column type="gboolean"/>
+    </columns>
   </object>
 </interface>

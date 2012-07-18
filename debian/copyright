@@ -1,0 +1,10 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: downloadr
+Upstream-Contact: Javed Khan <tuxcanfly@gmail.com>
+Source: https://launchpad.net/flashbox
+
+Files: *
+Copyright: (C) 2012 Javed Khan <tuxcanfly@gmail.com>
+License: GPL-3
+ The full text of the GPL is distributed in
+ /usr/share/common-licenses/GPL-3 on Debian systems.

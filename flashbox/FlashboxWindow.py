@@ -19,15 +19,15 @@ import subprocess
 import gettext
 
 from gettext import gettext as _
-gettext.textdomain('downloadr')
+gettext.textdomain('flashbox')
 
 from gi.repository import Gtk, GObject # pylint: disable=E0611
 import logging
-logger = logging.getLogger('downloadr')
+logger = logging.getLogger('flashbox')
 
-from downloadr_lib import Window
-from downloadr.AboutDownloadrDialog import AboutDownloadrDialog
-from downloadr.PreferencesDownloadrDialog import PreferencesDownloadrDialog
+from flashbox_lib import Window
+from flashbox.AboutFlashboxDialog import AboutFlashboxDialog
+from flashbox.PreferencesFlashboxDialog import PreferencesFlashboxDialog
 
 from flashcache import get_pids, get_file_names
 
@@ -37,16 +37,16 @@ COL_IS_DIRECTORY = 2
 REFRESH_TIMEOUT = 1000 # 1s
 
 
-# See downloadr_lib.Window.py for more details about how this class works
-class DownloadrWindow(Window):
-    __gtype_name__ = "DownloadrWindow"
+# See flashbox_lib.Window.py for more details about how this class works
+class FlashboxWindow(Window):
+    __gtype_name__ = "FlashboxWindow"
 
     def finish_initializing(self, builder): # pylint: disable=E1002
         """Set up the main window"""
-        super(DownloadrWindow, self).finish_initializing(builder)
+        super(FlashboxWindow, self).finish_initializing(builder)
 
-        self.AboutDialog = AboutDownloadrDialog
-        self.PreferencesDialog = PreferencesDownloadrDialog
+        self.AboutDialog = AboutFlashboxDialog
+        self.PreferencesDialog = PreferencesFlashboxDialog
 
         self.current_directory = os.path.realpath(os.path.expanduser('~'))
         self.icon = self.get_icon("video-x-generic")

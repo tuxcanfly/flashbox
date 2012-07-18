@@ -1,17 +1,6 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2012 Javed Khan <tuxcanfly@gmail.com>
-# This program is free software: you can redistribute it and/or modify it 
-# under the terms of the GNU General Public License version 3, as published 
-# by the Free Software Foundation.
-# 
-# This program is distributed in the hope that it will be useful, but 
-# WITHOUT ANY WARRANTY; without even the implied warranties of 
-# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR 
-# PURPOSE.  See the GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License along 
-# with this program.  If not, see <http://www.gnu.org/licenses/>.
+# This file is in the public domain
 ### END LICENSE
 
 from gi.repository import Gtk # pylint: disable=E0611
@@ -27,8 +16,8 @@ class AboutDialog(Gtk.AboutDialog):
         
         Returns a fully instantiated AboutDialog object.
         """
-        builder = get_builder('AboutDownloadrDialog')
-        new_object = builder.get_object("about_downloadr_dialog")
+        builder = get_builder('AboutFlashboxDialog')
+        new_object = builder.get_object("about_flashbox_dialog")
         new_object.finish_initializing(builder)
         return new_object
 
@@ -37,7 +26,7 @@ class AboutDialog(Gtk.AboutDialog):
 
         finish_initalizing should be called after parsing the ui definition
         and creating a AboutDialog object with it in order
-        to finish initializing the start of the new AboutDownloadrDialog
+        to finish initializing the start of the new AboutFlashboxDialog
         instance.
         
         Put your initialization code in here and leave __init__ undefined.

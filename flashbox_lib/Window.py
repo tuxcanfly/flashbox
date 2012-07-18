@@ -1,26 +1,15 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2012 Javed Khan <tuxcanfly@gmail.com>
-# This program is free software: you can redistribute it and/or modify it 
-# under the terms of the GNU General Public License version 3, as published 
-# by the Free Software Foundation.
-# 
-# This program is distributed in the hope that it will be useful, but 
-# WITHOUT ANY WARRANTY; without even the implied warranties of 
-# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR 
-# PURPOSE.  See the GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License along 
-# with this program.  If not, see <http://www.gnu.org/licenses/>.
+# This file is in the public domain
 ### END LICENSE
 
 from gi.repository import Gio, Gtk # pylint: disable=E0611
 import logging
-logger = logging.getLogger('downloadr_lib')
+logger = logging.getLogger('flashbox_lib')
 
 from . helpers import get_builder, show_uri, get_help_uri
 
-# This class is meant to be subclassed by DownloadrWindow.  It provides
+# This class is meant to be subclassed by FlashboxWindow.  It provides
 # common functions and some boilerplate.
 class Window(Gtk.Window):
     __gtype_name__ = "Window"
@@ -39,10 +28,10 @@ class Window(Gtk.Window):
         """Special static method that's automatically called by Python when 
         constructing a new instance of this class.
         
-        Returns a fully instantiated BaseDownloadrWindow object.
+        Returns a fully instantiated BaseFlashboxWindow object.
         """
-        builder = get_builder('DownloadrWindow')
-        new_object = builder.get_object("downloadr_window")
+        builder = get_builder('FlashboxWindow')
+        new_object = builder.get_object("flashbox_window")
         new_object.finish_initializing(builder)
         return new_object
 
@@ -50,8 +39,8 @@ class Window(Gtk.Window):
         """Called while initializing this instance in __new__
 
         finish_initializing should be called after parsing the UI definition
-        and creating a DownloadrWindow object with it in order to finish
-        initializing the start of the new DownloadrWindow instance.
+        and creating a FlashboxWindow object with it in order to finish
+        initializing the start of the new FlashboxWindow instance.
         """
         # Get a reference to the builder and set up the signals.
         self.builder = builder
@@ -60,7 +49,7 @@ class Window(Gtk.Window):
         self.preferences_dialog = None # instance
         self.AboutDialog = None # class
 
-        self.settings = Gio.Settings("net.launchpad.downloadr")
+        self.settings = Gio.Settings("net.launchpad.flashbox")
         self.settings.connect('changed', self.on_preferences_changed)
 
         # Optional Launchpad integration
@@ -70,7 +59,7 @@ class Window(Gtk.Window):
         try:
             from gi.repository import LaunchpadIntegration # pylint: disable=E0611
             LaunchpadIntegration.add_items(self.ui.helpMenu, 1, True, True)
-            LaunchpadIntegration.set_sourcepackagename('downloadr')
+            LaunchpadIntegration.set_sourcepackagename('flashbox')
         except ImportError:
             pass
 
@@ -80,7 +69,7 @@ class Window(Gtk.Window):
         #  http://owaislone.org/quickly-add-indicator/
         #  https://wiki.ubuntu.com/DesktopExperienceTeam/ApplicationIndicators
         try:
-            from downloadr import indicator
+            from flashbox import indicator
             # self is passed so methods of this class can be called from indicator.py
             # Comment this next line out to disable appindicator
             self.indicator = indicator.new_application_indicator(self)
@@ -91,14 +80,14 @@ class Window(Gtk.Window):
         show_uri(self, "ghelp:%s" % get_help_uri())
 
     def on_mnu_about_activate(self, widget, data=None):
-        """Display the about box for downloadr."""
+        """Display the about box for flashbox."""
         if self.AboutDialog is not None:
             about = self.AboutDialog() # pylint: disable=E1102
             response = about.run()
             about.destroy()
 
     def on_mnu_preferences_activate(self, widget, data=None):
-        """Display the preferences window for downloadr."""
+        """Display the preferences window for flashbox."""
 
         """ From the PyGTK Reference manual
            Say for example the preferences dialog is currently open,
@@ -116,11 +105,11 @@ class Window(Gtk.Window):
         # destroy command moved into dialog to allow for a help button
 
     def on_mnu_close_activate(self, widget, data=None):
-        """Signal handler for closing the DownloadrWindow."""
+        """Signal handler for closing the FlashboxWindow."""
         self.destroy()
 
     def on_destroy(self, widget, data=None):
-        """Called when the DownloadrWindow is closed."""
+        """Called when the FlashboxWindow is closed."""
         # Clean up code for saving application state should be added here.
         Gtk.main_quit()
 

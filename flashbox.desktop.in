@@ -2,7 +2,7 @@
 _Name=FlashBox
 _Comment=FlashBox application
 Categories=GNOME;Utility;
-Exec=downloadr
-Icon=/usr/share/downloadr/media/downloadr.svg
+Exec=flashbox
+Icon=/usr/share/flashbox/media/flashbox.svg
 Terminal=false
 Type=Application

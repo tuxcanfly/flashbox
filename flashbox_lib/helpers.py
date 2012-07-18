@@ -1,29 +1,18 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2012 Javed Khan <tuxcanfly@gmail.com>
-# This program is free software: you can redistribute it and/or modify it 
-# under the terms of the GNU General Public License version 3, as published 
-# by the Free Software Foundation.
-# 
-# This program is distributed in the hope that it will be useful, but 
-# WITHOUT ANY WARRANTY; without even the implied warranties of 
-# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR 
-# PURPOSE.  See the GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License along 
-# with this program.  If not, see <http://www.gnu.org/licenses/>.
+# This file is in the public domain
 ### END LICENSE
 
 """Helpers for an Ubuntu application."""
 import logging
 import os
 
-from . downloadrconfig import get_data_file
+from . flashboxconfig import get_data_file
 from . Builder import Builder
 
 import gettext
 from gettext import gettext as _
-gettext.textdomain('downloadr')
+gettext.textdomain('flashbox')
 
 def get_builder(builder_file_name):
     """Return a fully-instantiated Gtk.Builder instance from specified ui 
@@ -38,7 +27,7 @@ def get_builder(builder_file_name):
         ui_filename = None
 
     builder = Builder()
-    builder.set_translation_domain('downloadr')
+    builder.set_translation_domain('flashbox')
     builder.add_from_file(ui_filename)
     return builder
 
@@ -63,12 +52,12 @@ def set_up_logging(opts):
 
     formatter = logging.Formatter("%(levelname)s:%(name)s: %(funcName)s() '%(message)s'")
 
-    logger = logging.getLogger('downloadr')
+    logger = logging.getLogger('flashbox')
     logger_sh = logging.StreamHandler()
     logger_sh.setFormatter(formatter)
     logger.addHandler(logger_sh)
 
-    lib_logger = logging.getLogger('downloadr_lib')
+    lib_logger = logging.getLogger('flashbox_lib')
     lib_logger_sh = logging.StreamHandler()
     lib_logger_sh.setFormatter(formatter)
     lib_logger.addHandler(lib_logger_sh)
@@ -87,7 +76,7 @@ def get_help_uri(page=None):
 
     if not os.path.exists(help_uri):
         # installed so use gnome help tree - user's language
-        help_uri = 'downloadr'
+        help_uri = 'flashbox'
 
     # unspecified page is the index.page
     if page is not None:

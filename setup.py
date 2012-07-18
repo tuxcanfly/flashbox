@@ -23,7 +23,7 @@ import sys
 try:
     import DistUtilsExtra.auto
 except ImportError:
-    print >> sys.stderr, 'To build downloadr you need https://launchpad.net/python-distutils-extra'
+    print >> sys.stderr, 'To build flashbox you need https://launchpad.net/python-distutils-extra'
     sys.exit(1)
 assert DistUtilsExtra.auto.__version__ >= '2.18', 'needs DistUtilsExtra.auto >= 2.18'
 
@@ -31,7 +31,7 @@ def update_config(values = {}):
 
     oldvalues = {}
     try:
-        fin = file('downloadr_lib/downloadrconfig.py', 'r')
+        fin = file('flashbox_lib/flashboxconfig.py', 'r')
         fout = file(fin.name + '.new', 'w')
 
         for line in fin:
@@ -46,7 +46,7 @@ def update_config(values = {}):
         fin.close()
         os.rename(fout.name, fin.name)
     except (OSError, IOError), e:
-        print ("ERROR: Can't find downloadr_lib/downloadrconfig.py")
+        print ("ERROR: Can't find flashbox_lib/flashboxconfig.py")
         sys.exit(1)
     return oldvalues
 
@@ -54,28 +54,28 @@ def update_config(values = {}):
 def update_desktop_file(datadir):
 
     try:
-        fin = file('downloadr.desktop.in', 'r')
+        fin = file('flashbox.desktop.in', 'r')
         fout = file(fin.name + '.new', 'w')
 
         for line in fin:
             if 'Icon=' in line:
-                line = "Icon=%s\n" % (datadir + 'media/downloadr.svg')
+                line = "Icon=%s\n" % (datadir + 'media/flashbox.svg')
             fout.write(line)
         fout.flush()
         fout.close()
         fin.close()
         os.rename(fout.name, fin.name)
     except (OSError, IOError), e:
-        print ("ERROR: Can't find downloadr.desktop.in")
+        print ("ERROR: Can't find flashbox.desktop.in")
         sys.exit(1)
 
 
 class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
     def run(self):
-        values = {'__downloadr_data_directory__': "'%s'" % (self.prefix + '/share/downloadr/'),
+        values = {'__flashbox_data_directory__': "'%s'" % (self.prefix + '/share/flashbox/'),
                   '__version__': "'%s'" % self.distribution.get_version()}
         previous_values = update_config(values)
-        update_desktop_file(self.prefix + '/share/downloadr/')
+        update_desktop_file(self.prefix + '/share/flashbox/')
         DistUtilsExtra.auto.install_auto.run(self)
         update_config(previous_values)
 
@@ -86,7 +86,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 ##################################################################################
 
 DistUtilsExtra.auto.setup(
-    name='downloadr',
+    name='flashbox',
     version='12.07.4',
     license='GPL-3',
     author='Javed Khan',

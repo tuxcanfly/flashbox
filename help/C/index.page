@@ -4,8 +4,8 @@
 
 <info>
   <!-- This shows in the title bar so does not show [icon] -->
-  <title type="text">Downloadr</title>
-  <desc>The <app>Downloadr</app> help.</desc>
+  <title type="text">Flashbox</title>
+  <desc>The <app>Flashbox</app> help.</desc>
   <credit type="author">
     <name>Your Name</name>
     <email>Your E-mail</email>
@@ -20,7 +20,7 @@
 <!-- This shows on the page in title font -->
 <!-- the icon only shows when installed -->
 <media type="image" mime="image/png" src="figures/icon.png">[icon]</media>
-<app>Downloadr</app> Help
+<app>Flashbox</app> Help
 </title>
 
 <p>This is an example guide page. It's main function is to link together the help topics.</p>

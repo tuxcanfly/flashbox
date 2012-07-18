@@ -1,3 +1,10 @@
+flashbox (12.07.5) precise; urgency=low
+
+  * Renamed the app completely, removed all references to the old name
+
+ -- Javed Khan <tuxcanfly@gmail.com>  Wed, 18 Jul 2012 23:21:32 +0530
+
+
 flashbox (12.07.4) precise; urgency=low
 
   * Initial release.
